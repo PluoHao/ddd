@@ -1,0 +1,18 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>查询收货地址</title>
+</head>
+<body>
+{% for sname in name %}
+    <div>
+        姓名:{{sname.aname}}
+        地址:{{sname.ads}}
+        手机号:{{sname.phone}}
+
+        <a href="/user/delete/?deletes={{sname.id}}">删除</a>
+    </div>
+{% endfor %}
+</body>
+</html>

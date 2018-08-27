@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <script src="{% static 'js\jquery-1.11.3.js' %}"></script>
+    <script src="{% static 'js\address.js' %}"></script>
+    <script language="javascript" src="{% static 'js\pcasunzip.js' %}" charset="gb2312"></script>
+    <link rel="stylesheet" href="{% static 'css\address.css' %}">
+    <title>添加地址</title>
+</head>
+<body>
+    <form action="{% url 'address_in' %}" method="post">
+        {% csrf_token %}
+        <div id="mainBox">
+            <p>仅支持国内送货</p>
+            <div>
+                <span>收货人:</span>
+                <input type="text" name="username" placeholder="收货人" class="TextClass">
+            </div>
+            <div>
+                <span>手机号码:</span>
+                <input type="text" name="userphone" placeholder="手机号码" class="TextClass" style="margin-left:12px;">
+            </div>
+            <div>
+                <span>所在地区：</span>
+                <select name="user.province" id="province"></select>
+                        <select name="user.city" id="city"></select>
+                        <select name="user.area" id="area"></select><br>
+    <script language="javascript" defer>
+    new PCAS("user.province","user.city","user.area","山东省","济南市","济南市");
+
+    </script>
+                <div style="font-size: 10px;color: red;">{{message}}</div>
+            </div>
+            <div>
+                <span>详细地址:</span>
+                <textarea name="useraddress" id="useraddress" cols="33" rows="3" placeholder="详细地址：如道路、门牌号、楼栋层、单元楼"></textarea>
+            </div>
+            <input type="submit" value="提交">
+            <input type="reset" style="margin-left:20px" value="重置">
+        </div>
+
+
+    </form>
+
+</body>
+</html>

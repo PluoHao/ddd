@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery-1.11.3.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/smain.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+</head>
+<body>
+    <div id="BTop">
+        <div>
+            {% if request.session.user_name %}
+                <span style="margin-left:30px">欢迎您,{{request.session.user_name}}</span>
+                <a href="{% url 'dellogin' %}">退出</a>
+            {% else %}
+                <a href="{% url 'login' %}">请登录</a>
+                <a href="{% url 'register' %}">免费注册</a>
+            {% endif %}
+            <!--需改进-->
+            <div>
+                <a href="{% url 'Saddres' %}">查看地址</a>
+                <a href="{% url 'address' %}">添加收获地址</a>
+            </div>
+        </div>
+    </div>
+    <div id="Ctop">
+        <div id="CTopdiv">
+            <p><img src="{% static 'img/1535013696.jpg' %}" alt=""></p>
+
+            <input type="text" id="search" placeholder="请输入关键字">
+            <form action="">
+                <button id="Serch" >搜索</button>
+            </form>
+
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <ul>
+                <li style="background:url({% static 'img/bg1.jpg' %}) center">
+                    <img class="img1" src="{% static 'img/text1.png' %}" width="1150" height="500"/>
+                    <img class="img2" src="{% static 'img/con1.png' %}" width="1150" height="500"/>
+                </li>
+                <li style="background:url({% static 'img/bg2.jpg' %}) center">
+                    <img class="img1" src="{% static 'img/text2.png' %}" width="1150" height="500"/>
+                    <img class="img2" src="{% static 'img/con2.png' %}" width="1150" height="500"/>
+                </li>
+                <li style="background:url({% static 'img/bg3.jpg' %}) center">
+                    <img class="img1" src="{% static 'img/text3.png' %}" width="1150" height="500"/>
+                    <img class="img2" src="{% static 'img/con3.png' %}" width="1150" height="500"/>
+                </li>
+                <li style="background:url({% static 'img/bg4.jpg' %}) center">
+                    <img class="img1" src="{% static 'img/text4.png' %}" width="1150" height="500"/>
+                    <img class="img2" src="{% static 'img/con4.png' %}" width="1150" height="500"/>
+                </li>
+                <li style="background:url({% static 'img/bg5.jpg' %}) center">
+                    <img class="img1" src="{% static 'img/text5.png' %} " width="1150" height="500"/>
+                    <img class="img2" src="{% static 'img/con5.png' %}" width="1150" height="500"/>
+                </li>
+            </ul>
+        </div>
+        <div class="nav">
+            <ul>
+                <li class="bg"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+
+    {% for x in ac%}
+        <div>
+            <div id="minute">{{x.type}}</div>
+            <div id="pictrue">
+        {% for y in x.goods %}
+             <a href="{{y.get_absolute_url}}">
+                <span>
+                    <img src="/{{y.picture}}" alt="" >
+                   <div id='titles'>{{y.title}}</div>
+                    <div style="margin-left:70px; ">￥{{y.price}}</div>
+                </span>
+             </a>
+        {% endfor%}
+    {% endfor %}
+            </div>
+        </div>
+</body>
+</html>

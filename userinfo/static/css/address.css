@@ -1,0 +1,49 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+
+#mainBox{
+    width: 450px;
+    height: 400px;
+    border: 1px solid red;
+    padding-left:20px;
+
+}
+#mainBox > p{
+    width: 150px;
+    font-size: 20px;
+    margin: 20px auto;
+    color: cadetblue;
+}
+.TextClass{
+    width: 250px;
+    height: 35px;
+    outline: none;
+    padding: 10px;
+    margin:10px 0 0 28px ;
+    box-sizing: border-box;
+}
+#useraddress{
+    margin:10px 0 0 12px;
+    outline: none;
+
+}
+
+select{
+    width: 100px;
+    height:30px;
+    margin-top:10px;
+}
+form > div > input {
+    width: 150px;
+    height: 35px;
+    margin: 20px 0 0 75px;
+}

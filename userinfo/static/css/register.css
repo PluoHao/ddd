@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+/*注册表单*/
+#registerBox{
+    margin: 20px;
+    border: 1px solid #edecd6;
+    width: 400px;
+    height: 350px;
+    background: whitesmoke;
+    border-radius:10px;
+    box-shadow:0 0 5px 5px floralwhite;
+    margin: 100px auto;
+}
+
+
+form div > div input{
+    width: 250px;
+    height: 30px;
+    margin-left:110px ;
+    border-radius:5px;
+    outline: none;
+}
+
+form div > div > span{
+    font-size: 18px;
+    position:relative;
+    left: 5px;
+    top: 33px;
+}
+
+form > div > input{
+    width: 240px;
+    height: 35px;
+    margin-top: 20px;
+    margin-left: 75px;
+}
+
+form p{
+    font-size: 10px;
+    color: red;
+    float: right;
+    margin: 3px 37px;
+}
