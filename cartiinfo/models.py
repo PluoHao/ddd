@@ -12,10 +12,10 @@ ORDERSTATUS = (
 
 class CartInfo(models.Model):
     user = models.ForeignKey(UserInfo,db_column='user_id')
-    good = models.ForeignKey(Goods,db_column='good_id')
+    goods = models.ForeignKey(Goods,db_column='good_id')
     ccount = models.IntegerField('数量',db_column='cart_count')
     def __str__(self):
-        return self.ccount
+        return self.user.uname
 
 class Order(models.Model):
     orderNo = models.CharField('订单号',max_length=50)

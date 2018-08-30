@@ -8,36 +8,41 @@
     <script type="text/javascript" src="{% static 'js/jquery-1.11.3.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/smain.js' %}"></script>
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
 
 </head>
 <body>
-    <div id="BTop">
-        <div>
-            {% if request.session.user_name %}
-                <span style="margin-left:30px">欢迎您,{{request.session.user_name}}</span>
-                <a href="{% url 'dellogin' %}">退出</a>
-            {% else %}
-                <a href="{% url 'login' %}">请登录</a>
-                <a href="{% url 'register' %}">免费注册</a>
-            {% endif %}
+    <div class="navbar navbar-default">
+        <div class="container">
+            <ul class="nav navbar-nav">
+                {% if request.session.user_name %}
+                    <li style="margin-top: 15px">欢迎您,{{request.session.user_name}}</li>
+                    <li><a href="{% url 'dellogin' %}">退出</a></li>
+                {% else %}
+                    <li><a href="{% url 'login' %}">请登录</a></li>
+                    <li><a href="{% url 'register' %}">免费注册</a></li>
+                {% endif %}
+            </ul>
             <!--需改进-->
-            <div>
-                <a href="{% url 'Saddres' %}">查看地址</a>
-                <a href="{% url 'address' %}">添加收获地址</a>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{% url 'Saddres' %}">查看地址</a></li>
+                <li><a href="{% url 'address' %}">添加收获地址</a></li>
+            </ul>
+
+        </div>
+    </div>
+    <div class="navbar-header">
+        <a class="navbar-brand"><img src="{% static 'img/213.jpg' %}" alt="" width="100" height="100" style="border-radius: 5px"></a>
+    </div>
+    <form action="" class="navbar-form navbar-left">
+        <div class="boxs">
+            <div class="form-group" >
+                <input type="text" class="form-control" >
             </div>
         </div>
-    </div>
-    <div id="Ctop">
-        <div id="CTopdiv">
-            <p><img src="{% static 'img/1535013696.jpg' %}" alt=""></p>
+        <button type="submit" class="btn btn-default">搜索</button>
+    </form>
 
-            <input type="text" id="search" placeholder="请输入关键字">
-            <form action="">
-                <button id="Serch" >搜索</button>
-            </form>
-
-        </div>
-    </div>
     <div class="box">
         <div class="pic">
             <ul>

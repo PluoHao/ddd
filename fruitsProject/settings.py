@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -110,19 +111,36 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-Hans'
 
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_L10N = True
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (BASE_DIR,'static')
+# https://docs.djangoproject.com/en/1.11/howto/static-files/
+# Static files (CSS, JavaScript, Images)
+
 
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.11/howto/static-files/
+USE_L10N = True
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = (BASE_DIR,'static')
+SUIT_CONFIG = {
+    'ADMIN_NAME':"应用管理中心",
+    'LIST_PER_PAGE': 20,  # 表中显示行数
+    'MENU': ({'label': u'用户管理', 'app': 'auth',
+              'icon': 'icon-lock',  # 显示左边菜单的图标
+              'models': ('auth.User', 'auth.Group')},  # 每一个字典表示左侧菜单的一栏
+             {'label': u'监控管理', 'app': 'cartinfo',
+              'models':('cartinfo.Cartinfo','cartinfo.Order')},
+              {'label':u'用户人数','app':'memberapp',
+               'models':('memberapp.Goods','memberapp.GoodType')},
+             {'label':u'用户','app':'userinfo',
+              'models':('userinfo.Address','userinfo.UserInfo')})
+
+}
+

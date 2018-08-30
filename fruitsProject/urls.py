@@ -16,10 +16,12 @@ Including another URLconf
 from django.conf.urls import url,include
 from django.contrib import admin
 from memberapp import views
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^user/',include('userinfo.urls')),
     url(r'^$',views.index,name='index'),
     url(r'^login_out/',views.login_out,name='dellogin'),
-    url(r'^detail/',views.detail_one,name='detail')
+    url(r'^detail/',views.detail_one,name='detail'),
+    url(r'^carter/',include('cartiinfo.urls'))
 ]

@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    {% load static %}
+    <title>订单</title>
+</head>
+<body>
+{% for s in adss %}
+    <input type="radio" name="adds" value="{{s.id}}" _n = "{{s.aname}}" _a =" {{s.ads}}" _p="{{s.phone}}">
+    {{s.aname}}
+    {{s.ads}}
+    {{s.phone}}
+{% endfor %}
+<div id="show"></div>
+<a onclick="porder()">确定订单</a>
+<script type="text/javascript" src="{% static 'js/jquery-1.11.3.js' %}">
+</script>
+<script>
+    $(function () {
+        var s = '';
+        var cals = JSON.parse(sessionStorage.getItem('acot'));
+        $.each(cals,function (index,obj) {
+          s = s + obj.id + obj.name + obj.price +obj.count;
+            $('#show').append(s);
+            $('#show').append('<br>')
+        })
+    })
+    function porder() {
+        $.ajax({
+            url:'addorder',
+            type:'post',
+            datatype:'json',
+            data:{
+                'csrfmiddlewaretoken':'{{csrf_token}}',
+                'acot':sessionStorage.getItem('acot'),
+                'adsname':$('input:radio:checked').attr('_n'),
+                'adsphone':$('input:radio:checked').attr('_p'),
+                'ads':$('input:radio:checked').attr('_a'),
+            },
+            success:function (data) {
+                console.log(data)
+            },
+            error:function (error) {
+                console.log(error)
+            }
+        })
+    }
+</script>
+</body>
+</html>

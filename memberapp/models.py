@@ -26,6 +26,7 @@ class Goods(models.Model):
 
     def get_absolute_url(self):
         return '/detail/?goodid={}'.format(self.id)
-
+    def get_adcart_url(self):
+        return  '/carter/addcart/?gcount=1&goodid={}'.format(self.id)
 
 
