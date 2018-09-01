@@ -7,7 +7,8 @@
     <script type="text/javascript" src="{% static 'js/jquery-1.11.3.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/smain.js' %}"></script>
-    <!--<link rel="stylesheet" href="{% static 'css/main.css' %}">-->
+    <script type="text/javascript" src="{% static 'js/detail.js' %}" defer async></script>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="{% static 'css/detail.css' %}">
     <script type="text/javascript">
         function addcart(goodid) {
@@ -33,39 +34,37 @@
 
 
 <body>
-    <div id="BTop">
-        <div>
+    <div class="mains">
+        <div id="Aright">
             {% if request.session.user_name %}
-                <span style="margin-left:30px">欢迎您,{{request.session.user_name}}</span>
-                <a href="{% url 'dellogin' %}">退出</a>
+                <a href="">欢迎您,{{request.session.user_name}}</a>
             {% else %}
                 <a href="{% url 'login' %}">请登录</a>
                 <a href="{% url 'register' %}">免费注册</a>
             {% endif %}
-            <!--需改进-->
-            <div>
+        <!--需改进-->
+            <div class="rightM">
+                <a href="{% url 'index' %}">首页</a>
                 <a href="{% url 'Saddres' %}">查看地址</a>
                 <a href="{% url 'address' %}">添加收获地址</a>
-                <a href="/">首页</a>
             </div>
-        </div>
+         </div>
     </div>
     <div style="width: 100%">
         <img src="{% static 'img/mains.jpg' %}" alt="" style="width: 100%">
     </div>
     <div id="pink">
-        <div>
-
+    </div>
+    <div id="container">
+         <div id="books">
+            <div id="blues"></div>
+            <img class=booksImg src="/{{goodone.picture}}">
+        </div>
+        <div id="books1">
+            <img class=booksImg1 src="/{{goodone.picture}}">
         </div>
     </div>
-    <div>
-        <div id="books">
-            <img src="/{{goodone.picture}}">
-        </div >
-        <div>
 
-        </div>
-    </div>
 {{goodone.title}}
 {{goodone.price}}
 {{goodone.desc}}
