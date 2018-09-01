@@ -11,10 +11,6 @@ from .models import *
 
 def register_in(request):
     return render(request,'register.html')
-
-
-
-
 # 注册
 # 思路
 '''判断提交方式是否为post

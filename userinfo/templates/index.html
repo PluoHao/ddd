@@ -7,41 +7,40 @@
     <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/jquery-1.11.3.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/smain.js' %}"></script>
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
 
 </head>
 <body>
-    <div class="navbar navbar-default">
-        <div class="container">
-            <ul class="nav navbar-nav">
-                {% if request.session.user_name %}
-                    <li style="margin-top: 15px">欢迎您,{{request.session.user_name}}</li>
-                    <li><a href="{% url 'dellogin' %}">退出</a></li>
-                {% else %}
-                    <li><a href="{% url 'login' %}">请登录</a></li>
-                    <li><a href="{% url 'register' %}">免费注册</a></li>
-                {% endif %}
-            </ul>
-            <!--需改进-->
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="{% url 'Saddres' %}">查看地址</a></li>
-                <li><a href="{% url 'address' %}">添加收获地址</a></li>
-            </ul>
-
-        </div>
-    </div>
-    <div class="navbar-header">
-        <a class="navbar-brand"><img src="{% static 'img/213.jpg' %}" alt="" width="100" height="100" style="border-radius: 5px"></a>
-    </div>
-    <form action="" class="navbar-form navbar-left">
-        <div class="boxs">
-            <div class="form-group" >
-                <input type="text" class="form-control" >
+    <div class="mains">
+        <div id="Aright">
+            {% if request.session.user_name %}
+                <a href="">欢迎您,{{request.session.user_name}}</a>
+            {% else %}
+                <a href="{% url 'login' %}">请登录</a>
+                <a href="{% url 'register' %}">免费注册</a>
+            {% endif %}
+        <!--需改进-->
+            <div class="rightM">
+                <a href="{% url 'Saddres' %}">查看地址</a>
+                <a href="{% url 'address' %}">添加收获地址</a>
             </div>
+         </div>
+    </div>
+    <div style="width: 1150px; margin: 0 auto">
+        <div class="navbar-header">
+            <div class="navbar-brand"><img src="{% static 'img/57f8c4d6Nd425f6a3.png' %}" alt="" width="100px" height="100px"></div>
         </div>
-        <button type="submit" class="btn btn-default">搜索</button>
-    </form>
+        <form action="" method="post">
+            {% csrf_token %}
+
+            <div id="search">
+                <input type="text" placeholder="请输入关键字">
+                <button>搜索</button>
+            </div>
+
+        </form>
+    </div>
 
     <div class="box">
         <div class="pic">
@@ -84,13 +83,13 @@
             <div id="minute">{{x.type}}</div>
             <div id="pictrue">
         {% for y in x.goods %}
-             <a href="{{y.get_absolute_url}}">
-                <span>
-                    <img src="/{{y.picture}}" alt="" >
-                   <div id='titles'>{{y.title}}</div>
-                    <div style="margin-left:70px; ">￥{{y.price}}</div>
-                </span>
-             </a>
+                 <a href="{{y.get_absolute_url}}">
+                    <span>
+                        <img src="/{{y.picture}}" alt="" >
+                       <div id='titles'>{{y.title}}</div>
+                        <div style="margin-left:70px; ">￥{{y.price}}</div>
+                    </span>
+                 </a>
         {% endfor%}
     {% endfor %}
             </div>
